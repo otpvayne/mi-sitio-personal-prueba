@@ -1,52 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Mi Sitio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Meta básicas -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Título -->
+  <title>Mi Sitio | Home</title>
+
+  <!-- Tipografía (sistema por simplicidad) y CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Comportamiento: desplazamiento suave a anclas -->
+  <style>html { scroll-behavior: smooth; }</style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <a class="header__logo" href="/">MiLogo</a>
-    <nav class="header__nav" aria-label="Menú principal">
-      <a href="/">Home</a>
-      <a href="/sobre-mi.html">Sobre mí</a>
-      <a href="/contacto.html">Contacto</a>
-    </nav>
+  <!-- =======================
+       NAVBAR (Sticky + Responsive)
+       ======================= -->
+  <!-- header con role="banner" semántico -->
+  <header class="header" role="banner">
+    <!-- Contenedor de la barra -->
+    <div class="nav">
+      <!-- Marca / logo enlaza al inicio -->
+      <a class="nav__brand" href="#home">MiLogo</a>
+
+      <!-- Botón hamburguesa accesible:
+           aria-controls apunta al menú que controla
+           aria-expanded indica estado (true/false) -->
+      <button class="nav__toggle"
+              aria-label="Abrir menú"
+              aria-controls="primary-menu"
+              aria-expanded="false">
+        ☰
+      </button>
+
+      <!-- Menú principal con enlaces ancla a secciones -->
+      <nav class="nav__menu" id="primary-menu" aria-label="Menú principal">
+        <a class="nav__link" href="#home">Inicio</a>
+        <a class="nav__link" href="#about">Sobre mí</a>
+        <a class="nav__link" href="#contact">Contacto</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- Hero -->
+  <!-- =======================
+       MAIN
+       ======================= -->
+  <main id="home">
+    <!-- HERO: primera impresión -->
     <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Hola, soy [Tu Nombre]</h1>
-      <p>Desarrollador web. Construyo experiencias rápidas y accesibles.</p>
-      <a class="btn" href="/contacto.html">Contáctame</a>
+      <div class="hero__content">
+        <h1 id="hero-title">Hola, soy <span class="accent">Tu Nombre</span></h1>
+        <p class="hero__subtitle">
+          Desarrollador web. Creo interfaces rápidas, accesibles y modernas.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href="#contact">Contáctame</a>
+          <a class="btn btn--ghost" href="#about">Sobre mí</a>
+        </div>
+      </div>
+      <!-- Fondo decorativo (solo visual) -->
+      <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
-    <!-- Cards de skills (ejemplo) -->
-    <section class="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title">Habilidades</h2>
-      <div class="cards">
-        <article class="card">
-          <h3 class="card__title">HTML</h3>
-          <p class="card__text">Estructura semántica</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">CSS</h3>
-          <p class="card__text">Layouts responsivos</p>
-        </article>
-        <article class="card">
-          <h3 class="card__title">Git</h3>
-          <p class="card__text">Flujo de trabajo profesional</p>
-        </article>
+    <!-- Sección ABOUT (ancla para probar la navbar) -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>Sobre mí</h2>
+        <p>
+          Soy desarrollador front-end orientado a resultados. Me enfoco en
+          rendimiento, accesibilidad y UX. Me encanta construir componentes reutilizables.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección CONTACT (ancla para probar la navbar) -->
+    <section id="contact" class="section section--alt">
+      <div class="container">
+        <h2>Contacto</h2>
+        <form class="form" aria-label="Formulario de contacto">
+          <label class="form__field">
+            <span>Nombre</span>
+            <input type="text" placeholder="Tu nombre" required />
+          </label>
+          <label class="form__field">
+            <span>Correo</span>
+            <input type="email" placeholder="tucorreo@ejemplo.com" required />
+          </label>
+          <label class="form__field">
+            <span>Mensaje</span>
+            <textarea placeholder="¿En qué puedo ayudarte?" rows="4" required></textarea>
+          </label>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <!-- =======================
+       FOOTER
+       ======================= -->
+  <footer class="footer" role="contentinfo">
     <small>&copy; 2025 Tu Nombre. Todos los derechos reservados.</small>
   </footer>
+
+  <!-- =======================
+       JS mínimo: menú móvil y sombra al hacer scroll
+       ======================= -->
+  <script>
+    // Seleccionamos elementos
+    const toggle = document.querySelector('.nav__toggle');
+    const menu   = document.querySelector('#primary-menu');
+    const header = document.querySelector('.header');
+
+    // Toggle del menú en móvil
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open'); // añade/quita clase
+      // Actualiza atributo aria-expanded para accesibilidad
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Agrega una clase al header cuando hay scroll para sombra/fondo
+    window.addEventListener('scroll', () => {
+      // Si desplazamos más de 8px, añade clase; si no, quítala
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    });
+  </script>
 </body>
 </html>
