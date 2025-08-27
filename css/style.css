@@ -208,3 +208,117 @@ input:focus, textarea:focus {
    ocultas bajo el header sticky
    ======================= */
 section { scroll-margin-top: 88px; }
+/* =========================
+   SECCIÓN SERVICES (GRID)
+   ========================= */
+/* contenedor de la sección (usa .container global si lo tienes) */
+.services {
+  padding: 3rem 1rem;
+  background: transparent; /* ajusta si quieres */
+}
+
+/* Título centrado */
+.services h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Grid responsive: 3 columnas en desktop, 2 en tablet, 1 en móvil */
+.services__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas por defecto */
+}
+
+/* Ajuste responsive */
+@media (max-width: 900px) {
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .services__grid { grid-template-columns: 1fr; }
+}
+
+/* Estilos de la tarjeta reutilizable */
+.service-card {
+  background: var(--card, #fff);       /* usa variable --card si existe */
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover ligero para indicar interactividad */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(2,6,23,0.10);
+}
+
+/* Icono grande encima */
+.service-card__icon {
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Título y texto */
+.service-card__title { margin: 0.25rem 0; font-size: 1.1rem; }
+.service-card__text  { color: var(--muted, #64748b); font-size: 0.95rem; }
+
+/* =========================
+   SECCIÓN CONTACT (FORM)
+   ========================= */
+.contact {
+  padding: 3rem 1rem;
+  background: var(--contact-bg, #f8fafc); /* contraste leve */
+}
+
+/* Formulario centrado y con ancho máximo */
+.contact__form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+/* Filas del formulario: label + input */
+.form__row { display: grid; gap: .35rem; }
+
+/* Etiqueta visible */
+.form__label { font-weight: 600; font-size: .95rem; color: var(--text, #0f172a); }
+
+/* Estilo de inputs y textarea */
+.form__input {
+  padding: .8rem 1rem;
+  border: 1px solid #e6edf3;
+  border-radius: 8px;
+  font: inherit;
+  background: var(--card, #fff);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+/* En foco, resaltar con la variable brand si existe */
+.form__input:focus {
+  outline: none;
+  border-color: var(--brand, #4f46e5);
+  box-shadow: 0 6px 18px rgba(79,70,229,0.08);
+}
+
+/* Contenedor de botones */
+.form__actions { display:flex; gap:.75rem; flex-wrap:wrap; }
+
+/* Mensaje de estado */
+.contact__status {
+  max-width:700px;
+  margin: 0.5rem auto 1rem;
+  padding: .75rem 1rem;
+  border-radius: 8px;
+  background: #e6fffa;
+  color: #065f46;
+  border: 1px solid rgba(6,95,70,0.08);
+}
+
+/* Validación: clase que se aplica con JS para errores */
+.form__input.error {
+  border-color: #ef4444;
+  box-shadow: 0 6px 18px rgba(239,68,68,0.06);
+}

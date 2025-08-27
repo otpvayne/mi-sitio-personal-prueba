@@ -1,0 +1,40 @@
+<!-- =========================
+     SECCIÓN CONTACTO
+     ========================= -->
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="container">
+    <h2 id="contact-title">Contacto</h2>
+
+    <!-- Mensaje de estado (será actualizado por JS) -->
+    <div id="contact-status" role="status" aria-live="polite" class="contact__status" hidden></div>
+
+    <!-- Formulario: no requiere backend. JS lo "simula" -->
+    <form id="contact-form" class="contact__form" novalidate>
+      <!-- Campo nombre: label explícito para accesibilidad -->
+      <label class="form__row">
+        <span class="form__label">Nombre</span>
+        <input type="text" name="name" id="name" class="form__input" placeholder="Tu nombre" required aria-required="true">
+      </label>
+
+      <!-- Campo email -->
+      <label class="form__row">
+        <span class="form__label">Correo</span>
+        <input type="email" name="email" id="email" class="form__input" placeholder="tucorreo@ejemplo.com" required aria-required="true">
+      </label>
+
+      <!-- Campo mensaje -->
+      <label class="form__row">
+        <span class="form__label">Mensaje</span>
+        <textarea name="message" id="message" class="form__input" placeholder="Escribe tu mensaje" rows="5" required aria-required="true"></textarea>
+      </label>
+
+      <!-- Botón de envío -->
+      <div class="form__actions">
+        <button class="btn" type="submit">Enviar mensaje</button>
+        <button class="btn btn--ghost" type="reset">Limpiar</button>
+      </div>
+
+      <!-- Nota: si quieres enviar a correo real sin backend, ver más abajo (mailto / Formspree) -->
+    </form>
+  </div>
+</section>

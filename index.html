@@ -97,6 +97,40 @@
       </div>
     </section>
   </main>
+<!-- =========================
+     SECCIÓN SERVICIOS
+     ========================= -->
+<section id="services" class="section services" aria-labelledby="services-title">
+  <!-- Título de sección accesible -->
+  <div class="container">
+    <h2 id="services-title">Servicios / Habilidades</h2>
+
+    <!-- Grid que contiene las tarjetas de servicio -->
+    <div class="services__grid">
+      <!-- Tarjeta 1 -->
+      <article class="service-card" aria-labelledby="s1-title">
+        <!-- Icono visual (aria-hidden porque es decorativo) -->
+        <div class="service-card__icon" aria-hidden="true">⚡</div>
+        <h3 id="s1-title" class="service-card__title">Desarrollo Frontend</h3>
+        <p class="service-card__text">HTML semántico, CSS modular y JavaScript interactivo.</p>
+      </article>
+
+      <!-- Tarjeta 2 -->
+      <article class="service-card" aria-labelledby="s2-title">
+        <div class="service-card__icon" aria-hidden="true">🎨</div>
+        <h3 id="s2-title" class="service-card__title">Diseño UI/UX</h3>
+        <p class="service-card__text">Prototipos y componentes accesibles y consistentes.</p>
+      </article>
+
+      <!-- Tarjeta 3 -->
+      <article class="service-card" aria-labelledby="s3-title">
+        <div class="service-card__icon" aria-hidden="true">⚙️</div>
+        <h3 id="s3-title" class="service-card__title">Integración & DevOps</h3>
+        <p class="service-card__text">Automatización simple, despliegues y pipelines básicos.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
   <!-- =======================
        FOOTER
@@ -127,5 +161,80 @@
       header.classList.toggle('is-scrolled', window.scrollY > 8);
     });
   </script>
+  <script>
+  (function () {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('contact-status');
+
+    // Helper: muestra mensaje y oculta tras unos segundos
+    function showStatus(message, isError = false) {
+      status.hidden = false;
+      status.textContent = message;
+      status.style.background = isError ? '#ffe6e6' : '#e6fffa';
+      status.style.color = isError ? '#991b1b' : '#065f46';
+      // ocultar después de 5s
+      setTimeout(()=> { status.hidden = true; }, 5000);
+    }
+
+    // Simple validación: verifica required + email pattern
+    function validate() {
+      let valid = true;
+
+      // campos
+      const name = form.querySelector('#name');
+      const email = form.querySelector('#email');
+      const message = form.querySelector('#message');
+
+      // limpiar errores previos
+      [name, email, message].forEach(i => i.classList.remove('error'));
+
+      if (!name.value.trim()) { name.classList.add('error'); valid = false; }
+      // email básico
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email.value.trim())) { email.classList.add('error'); valid = false; }
+      if (!message.value.trim()) { message.classList.add('error'); valid = false; }
+
+      return valid;
+    }
+
+    // Handler submit
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // no recargar la página
+
+      if (!validate()) {
+        showStatus('Por favor completa los campos requeridos correctamente.', true);
+        return;
+      }
+
+      // --- Opción A: envío simulado (sin backend) ---
+      // Aquí simplemente mostramos éxito y limpiamos el formulario.
+      showStatus('¡Mensaje enviado! (simulado) — pronto te contactaré.', false);
+      form.reset();
+
+      // --- Opción B (opcional): Enviar a Formspree ---
+      // Si quieres enviar realmente a un email sin backend, puedes
+      // crear un endpoint en Formspree y descomentar este bloque y
+      // reemplazar "TU_FORMSPREE_ENDPOINT" por la URL que te den.
+      /*
+      const formData = new FormData(form);
+      fetch('https://formspree.io/f/TU_FORMSPREE_ENDPOINT', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          showStatus('¡Mensaje enviado! Revisa tu correo.', false);
+          form.reset();
+        } else {
+          showStatus('Ocurrió un error al enviar. Intenta más tarde.', true);
+        }
+      }).catch(()=> {
+        showStatus('Ocurrió un error de red. Intenta más tarde.', true);
+      });
+      */
+    });
+  })();
+</script>
+
 </body>
 </html>
