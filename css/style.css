@@ -247,3 +247,13 @@ body {
   outline-offset: 2px;
   border-radius: 8px;
 }
+.section {
+  opacity: 0;             /* Invisible al inicio */
+  transform: translateY(30px); /* Un poco hacia abajo */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}

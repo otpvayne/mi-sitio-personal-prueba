@@ -98,6 +98,16 @@
 
   <!-- Footer -->
   <footer class="footer"><small>&copy; 2025 Tu Nombre</small></footer>
+<script>
+  const sections = document.querySelectorAll('.section');
+  window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+      if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+        sec.classList.add('show');
+      }
+    });
+  });
+</script>
 
   <!-- JS -->
   <script>
