@@ -1,58 +1,57 @@
-# Mi Sitio Personal (estático)
+# 🚀 Proyecto Final - Landing Page Personal
 
-## 🎯 Objetivo
-Sitio personal estático (Home, Sobre mí, Contacto) para presentar mi perfil profesional y facilitar el contacto.
+## 📌 Objetivo
+Crear un sitio web estático de 3 secciones (Home, Servicios, Contacto) con animaciones, responsive y accesible.
 
-## 🗺️ Alcance (MVP)
-- Home (hero + habilidades + CTA)
-- Sobre mí (bio, experiencia, foto)
-- Contacto (formulario básico)
+## 🛠️ Tecnologías usadas
+- HTML5 semántico
+- CSS3 (flexbox, grid, animaciones, media queries)
+- Git y GitHub
 
-## 🧩 Componentes previstos
-- Header (logo + nav)
-- Hero (titular + subtítulo + CTA)
-- Card (habilidades/servicios)
-- ContactForm (inputs + botón)
-- Footer
+## ✨ Características
+- Navbar sticky y responsive
+- Hero section con presentación personal
+- Sección de servicios con cards
+- Formulario de contacto validado con HTML5
+- Animaciones suaves en botones y secciones
 
-## 🧱 Estructura
-mi-sitio-personal/
-├─ index.html
-├─ sobre-mi.html
-├─ contacto.html
-├─ css/
-│ ├─ style.css
-│ └─ components.css
-├─ components/
-│ ├─ header.html
-│ ├─ hero.html
-│ ├─ card.html
-│ ├─ contact-form.html
-│ └─ footer.html
-└─ assets/
-├─ img/
-└─ icons/
+## 📱 Responsive
+- Desktop ✔️
+- Tablet ✔️
+- Mobile ✔️
+
+## 📷 Capturas
+![Home](./assets/screenshots/home.png)
+![Servicios](./assets/screenshots/services.png)
+![Contacto](./assets/screenshots/contact.png)
+
+## 📖 Aprendizajes
+- Maquetación con grid y flexbox
+- Buenas prácticas en accesibilidad
+- Animaciones y transiciones CSS
+- Organización de un proyecto web real
+
+## ✅ Checkpoint Personal
+- **Dominado**: HTML semántico, CSS básico, responsive design
+- **Me costó**: Media queries avanzadas y grid
+- **Mi GitHub**: ahora tiene estructura clara y commits ordenados
+
+---
+
+📌 Push final:
+```bash
+git add .
+git commit -m "final-deliverable-html-css"
+git push origin main
+
+---
+
+## 🎉 Cierre de la primera etapa
+- ✅ **Cumplido**: tienes tu primera landing page real lista para mostrar.  
+- 🔁 **Repasar rápido**: accesibilidad básica y media queries.  
+- 🧭 **Próxima fase (Día 21 en adelante)**: Iniciamos **JavaScript** para darle vida al frontend.  
+- 🛠️ **Mini proyecto práctico**: Publica tu landing en **GitHub Pages** y compártela como tu primer portfolio.  
+
+---
 
 
-## 🧪 Criterios de aceptación (MVP)
-- Navegación funcional entre las 3 páginas.
-- Diseño responsive ≥ 320px de ancho.
-- Accesibilidad básica (alt en imágenes, `lang="es"`, etiquetas semánticas).
-- Lighthouse Accesibilidad ≥ 90 (a completar cuando se maquete).
-
-## 🗂️ Planificación ágil (resumen)
-- **Historias de usuario**
-  - *Como reclutador, quiero ver un resumen claro en Home para decidir si reviso el CV completo.*
-  - *Como cliente, quiero un formulario sencillo para solicitar contacto rápido.*
-- **Tareas** (backlog)
-  - Crear header y navegación
-  - Maquetar hero Home
-  - Crear componente card y listarlo en Home
-  - Página Sobre mí
-  - Página Contacto (form)
-  - Estilos responsive y accesibilidad
-- **Definición de Hecho**
-  - HTML validado, semántico
-  - CSS sin warnings
-  - Navegación probada
-  - README actualizado
